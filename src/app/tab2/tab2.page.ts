@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { PaysPage } from '../modals/pays/pays.page';
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +9,20 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(public modalController: ModalController) {}
+
+  async modal(kindOf) {
+
+    const modal = await this.modalController.create({
+      component: PaysPage,
+      mode: "ios",
+      componentProps: {
+        'kindOf': kindOf
+      }
+    });
+    return await modal.present();
+  }
+
+  
 
 }

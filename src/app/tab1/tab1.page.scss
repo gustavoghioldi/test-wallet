@@ -1,28 +1,86 @@
-.coco {
-  background-color: red;
-}
-#container {
-    text-align: center;
+* {
+  font-family: 'roboto';
   
+}
+
+
+ion-toolbar{
+
+  --ion-background-color: #204051;
+  
+}
+
+ion-title{
+  color: #e4e3e3;
+  margin-top: 5%;
+  font-size: 25px;
+  text-justify: center;
+  
+}
+
+ion-img{
+  height: 15%;
+  width: 15%;
+ margin-left: 80%;
+ margin-top: -13%;
+ font-weight: normal;
+ 
+}
+  
+  
+.item{
+  --background:whitesmoke;
+  height: 55px;
+ 
+ 
+}
+
+.item1{
+  --background:whitesmoke;
+  height: 55px;
+ 
+ 
+}
+
+.item2{
+  --background:whitesmoke;
+  height: 48px;
+ 
+ 
+}
+
+.coin{
+  margin-right: 32px;
+  color: #6db1a6;
+  
+}
+
+#container {
+
+    text-align: center;
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 10%;
+    right: 10%;
     top: 50%;
     transform: translateY(-50%);
+   border-radius: 10px;
+   
   }
   
   #container strong {
     font-size: 20px;
     line-height: 26px;
   }
+
+   
   
   #container p {
     font-size: 16px;
     line-height: 22px;
-  
-    color: #8c8c8c;
-  
+    color: black;
     margin: 0;
+    border-radius: 10px;
+    
   }
   
   #container a {

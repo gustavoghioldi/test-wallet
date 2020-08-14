@@ -1,3 +1,39 @@
+ion-toolbar{
+
+  --ion-background-color: #204051;
+  
+}
+
+ion-title{
+  color: #e4e3e3;
+  margin-top: 5%;
+  font-size: 25px;
+  text-justify: center;
+  
+}
+
+ion-img{
+  height: 15%;
+  width: 15%;
+ margin-left: 80%;
+ margin-top: -13%;
+ font-weight: normal;
+ 
+}
+
+ion-card{
+  --background:whitesmoke;
+  height: 30px;
+  width:80%;
+  padding-top: 5px;
+  margin: auto;
+}
+
+ion-label{
+  color: black;
+
+  
+}
 #container {
     text-align: center;
   

@@ -9,9 +9,10 @@
   <ion-card>
 
     <ion-item>
+      <ion-label *ngIf="kindOf=='CBU'">CBU</ion-label>
       <ion-input [(ngModel)]="accountIdentity"></ion-input>
       <ion-icon *ngIf="kindOf=='G2G'" name="qr-code-outline"></ion-icon>
-      <ion-label *ngIf="kindOf=='CBU'">CBU</ion-label>
+     
     </ion-item>
     <ion-item>
       <ion-icon name="logo-usd" ></ion-icon>
@@ -22,7 +23,7 @@
 
     <ion-item>
       <ion-button color="primary" (click)="check(kindOf)">Enviar</ion-button>
-      <ion-button color="primary" (click)="dismiss()">cerrar</ion-button>
+      <ion-button color="primary" (click)="dismiss()">Cerrar</ion-button>
     </ion-item>
 
   </ion-card>

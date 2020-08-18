@@ -23,7 +23,7 @@
     <ion-card>
       <ion-item class="item">
         <ion-icon class="coin" name="server-outline"></ion-icon>
-        <ion-label>Gloua Tokens</ion-label>
+        <ion-label>Gloua Tokens {{balance}}</ion-label>
       </ion-item>
 
       <ion-item class="item1">
@@ -36,5 +36,7 @@
         <ion-label>Ganacias Totales</ion-label>
       </ion-item>
     </ion-card>
+    <ion-button (click)="cashIn()">Cargar Saldo</ion-button>
+    <ion-button (click)="cashOut()">Retirar Saldo</ion-button>
   </div>
 </ion-content>

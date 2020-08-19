@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
+import { CoreService } from 'src/app/services/core.service';
 @Component({
   selector: 'app-pays',
   templateUrl: './pays.page.html',
@@ -11,15 +12,24 @@ export class PaysPage implements OnInit {
   @Input() kindOf: string;
   accountIdentity: string;
   amount: number;
+  balance: number;
+  price: number;
   constructor(
     private modalCtrl: ModalController,
     public alertController: AlertController,
     public http: HttpClient,
-  ) { }
+    private core: CoreService,
+    public loadingController: LoadingController
+  ) {
+    core.getPrice().then(data=>{
+      this.price = data['price'];
+    }).catch()
+  }
 
   ngOnInit(): void {
 
   }
+
   async check(kindOf) {
     this.accountIdentity;
     let message = null;
@@ -28,7 +38,7 @@ export class PaysPage implements OnInit {
         message = "Esta seguro que quiere transferir al CBU: "+this.accountIdentity;
         break;
       case 'G2G':
-        message = await this.http.get('https://en097zv9y98qmg.x.pipedream.net').toPromise();
+        message = "Esta seguro que quiere transferir: "+this.amount+"\na: "+this.accountIdentity;
         break;
       default:
         break;
@@ -40,7 +50,6 @@ export class PaysPage implements OnInit {
 
   async presentAlertPrompt(response) {
     const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
       header: 'Chequear información',
       message: response,
       inputs: [
@@ -63,21 +72,38 @@ export class PaysPage implements OnInit {
           }
         }, {
           text: 'Ok',
-          handler: data => {
-            console.log(data.transfer_token);
+          handler: async () => {
+            const loading = await this.presentLoading()
+            loading.present()
+            this.core.transfer(this.accountIdentity, this.amount)
+            .then(()=>{
+              loading.dismiss()
+              this.alertSuccessOrFail('SUCCESS')
+            })
+            .catch(()=>{
+              loading.dismiss()
+              this.alertSuccessOrFail('FAIL')
+            })
+            
           }
         }
       ]
     });
     await alert.present();
   }
-
-  confirm_cbu() {
-
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+  
+    });
+    return loading
   }
-
-  confirm_g2g() {
-
+  async alertSuccessOrFail(message) {
+    const alert = await this.alertController.create({
+      message: message
+    })
+    alert.present()
   }
 
 

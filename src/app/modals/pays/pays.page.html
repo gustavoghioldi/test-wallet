@@ -6,6 +6,7 @@
 </ion-header>
 
 <div id="container">
+
   <ion-card>
 
     <ion-item>
@@ -15,10 +16,18 @@
      
     </ion-item>
     <ion-item>
-      <ion-icon name="logo-usd" ></ion-icon>
+      <ion-icon *ngIf="kindOf=='CBU'" name="logo-usd" ></ion-icon>
+      <ion-label *ngIf="kindOf=='G2G'">GLT</ion-label>
       <ion-input [(ngModel)]="amount" type="number"></ion-input>
-      
-      
+    </ion-item>
+
+    <ion-item *ngIf="kindOf=='CBU'">
+      <ion-label>GLT</ion-label>
+      <ion-label>{{amount/price}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="kindOf=='G2G'">
+      <ion-label>$ARG</ion-label>
+      <ion-label>{{price*amount}}</ion-label>
     </ion-item>
 
     <ion-item>

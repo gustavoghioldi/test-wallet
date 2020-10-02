@@ -28,5 +28,9 @@
 /*Font Family*/
 @font-face {
   font-family: 'roboto';
-  src: url('/assets/fonts/roboto.ttf');
+  src: url('/assets/fonts/Roboto-Medium.ttf');
+}
+
+.modal-wrapper{
+  background: transparent !important;
 }

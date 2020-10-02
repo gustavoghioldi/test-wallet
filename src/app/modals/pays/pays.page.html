@@ -1,14 +1,8 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title *ngIf="kindOf=='G2G'">Pagar a Otra Cartera</ion-title>
-    <ion-title *ngIf="kindOf=='CBU'">Pagar a un CBU</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="container">
 
-<div id="container">
 
-  <ion-card>
-
+  
+    <ion-list lines="none">
     <ion-item>
       <ion-label *ngIf="kindOf=='CBU'">CBU</ion-label>
       <ion-input [(ngModel)]="accountIdentity"></ion-input>
@@ -17,23 +11,23 @@
     </ion-item>
     <ion-item>
       <ion-icon *ngIf="kindOf=='CBU'" name="logo-usd" ></ion-icon>
-      <ion-label *ngIf="kindOf=='G2G'">GLT</ion-label>
+      <ion-label *ngIf="kindOf=='G2G'">DU$</ion-label>
       <ion-input [(ngModel)]="amount" type="number"></ion-input>
     </ion-item>
 
-    <ion-item *ngIf="kindOf=='CBU'">
-      <ion-label>GLT</ion-label>
-      <ion-label>{{amount/price}}</ion-label>
-    </ion-item>
     <ion-item *ngIf="kindOf=='G2G'">
-      <ion-label>$ARG</ion-label>
-      <ion-label>{{price*amount}}</ion-label>
+      <ion-label>aprox en $ARG</ion-label>
+      <ion-label>{{sellPrice*amount | number : '1.4-4'}}</ion-label>
     </ion-item>
-
     <ion-item>
-      <ion-button color="primary" (click)="check(kindOf)">Enviar</ion-button>
-      <ion-button color="primary" (click)="dismiss()">Cerrar</ion-button>
+      <ion-label>mensaje (opcional):</ion-label>
+      <ion-input [(ngModel)]="message" type="text"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-button  (click)="check(kindOf)">Enviar</ion-button>
+      <ion-button  (click)="dismiss()">Cerrar</ion-button>
     </ion-item>
 
-  </ion-card>
+  </ion-list>
 </div>

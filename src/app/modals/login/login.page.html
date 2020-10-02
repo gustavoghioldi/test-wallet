@@ -1,26 +1,24 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<div id="container">
-  <ion-card>
 
+<div class="container">
+
+  <ion-list lines="none">
     <ion-item>
       <ion-label>Usuario:</ion-label>
       <ion-input [(ngModel)]="username"></ion-input>
      
     </ion-item>
+    
     <ion-item>
       <ion-label>Contraseña:</ion-label>
-      <ion-input [(ngModel)]="password"></ion-input>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-button color="primary" (click)="login()">Enviar</ion-button>
-      <ion-button color="primary">Dar de alta</ion-button>
+      <ion-button  (click)="login()">Enviar</ion-button>
+      <ion-button >Dar de alta</ion-button>
     </ion-item>
+    
 
-  </ion-card>
+  </ion-list>
 </div>

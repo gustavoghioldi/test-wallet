@@ -15,6 +15,18 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./modals/login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'convert',
+    loadChildren: () => import('./modals/convert/convert.module').then( m => m.ConvertPageModule)
+  },
+  {
+    path: 'cashin',
+    loadChildren: () => import('./modals/cashin/cashin.module').then( m => m.CashinPageModule)
+  },
+  {
+    path: 'cashout',
+    loadChildren: () => import('./modals/cashout/cashout.module').then( m => m.CashoutPageModule)
+  },
 
 ];
 @NgModule({

@@ -1,13 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img src="assets/logo-gloua.png"></ion-img>
-    <ion-title>
-      Pagos
-    </ion-title>
-   
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -16,18 +6,30 @@
   </ion-header>
 
   <div id="container">
-    
-    <ion-card>
-      <ion-item (click)="modal('G2G')" class="ion-activated rocket">
-        <ion-icon class="cbu" name="rocket-outline" slot="start"></ion-icon>
-        <ion-label>Gloua a Gloua</ion-label>
-      </ion-item>
-      
-      <ion-item (click)="modal('CBU')" class="ion-activated arrow">
-        <ion-icon class="cbu" name="exit-outline"></ion-icon>
-        <ion-label>A CBU</ion-label>
-      </ion-item>
 
-    </ion-card>
+
+    <ion-item (click)="modalTranfer('G2G')" class="rocket">
+      <ion-icon class="coin" name="rocket-outline"></ion-icon>
+      <ion-label>
+        Transferir DU$
+      </ion-label>
+    </ion-item>
+    <ion-item (click)="modalConvert('G2G')" class="rocket">
+      <ion-icon class="coin" name="swap-horizontal-outline"></ion-icon>
+      <ion-label>
+        Convertir
+      </ion-label>
+    </ion-item>
+
+    <ion-item (click)="cashOut()" class="rocket">
+      <ion-icon class="coin" name="arrow-down-outline"></ion-icon>
+      <ion-label>Retirar Saldo</ion-label>
+    </ion-item>
+    <ion-item (click)="cashIn()" class="rocket">
+      <ion-icon class="coin" name="arrow-up-outline"></ion-icon>
+      <ion-label>Cargar Saldo</ion-label>
+    </ion-item>
+
+
   </div>
 </ion-content>

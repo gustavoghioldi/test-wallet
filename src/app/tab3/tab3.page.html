@@ -1,13 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-img src="assets/logo-gloua.png"></ion-img>
-    <ion-title>
-      Operaciones
-    </ion-title>
-    
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -15,9 +5,19 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <ion-card>
-      <ion-label>LOG</ion-label>
-    </ion-card>
-  </div>
+
+  <ion-item>
+    <ion-label>Fecha</ion-label>
+    <ion-label>Valor</ion-label>
+    <ion-label>Monto</ion-label>
+  </ion-item>
+    <ion-item *ngFor="let transaction of transactionsDuos">
+      <ion-label>{{transaction.date}}</ion-label>
+      <ion-label>{{transaction.value}}</ion-label>
+      <ion-label>{{transaction.amount|number : '1.4-4'}}</ion-label>
+    </ion-item>
+  
+
+
+  
 </ion-content>

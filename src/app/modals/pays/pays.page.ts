@@ -13,7 +13,8 @@ export class PaysPage implements OnInit {
   accountIdentity: string;
   amount: number;
   balance: number;
-  price: number;
+  sellPrice: number;
+  message: string;
   constructor(
     private modalCtrl: ModalController,
     public alertController: AlertController,
@@ -22,7 +23,8 @@ export class PaysPage implements OnInit {
     public loadingController: LoadingController
   ) {
     core.getPrice().then(data=>{
-      this.price = data['price'];
+      console.log(data['price'].sell_price)
+      this.sellPrice = data['price'].sell_price;
     }).catch()
   }
 

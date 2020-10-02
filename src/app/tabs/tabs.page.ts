@@ -12,12 +12,17 @@ import { ModalController } from '@ionic/angular';
 })
 export class TabsPage {
   public amount;
-  constructor(public core: CoreService, public modalController: ModalController, private localData: LocalDataService, private router: Router) {
+  constructor(public core: CoreService, 
+    public modalController: ModalController, 
+    private localData: LocalDataService, 
+    private router: Router) {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd && this.router.url == '/tabs/tab1') {
         this.core.getAmount()
           .then((core_balance) => {
-            localData.setUserData('amount', core_balance['balance'])
+            console.log(core_balance)
+            localData.setUserData('amount_dus', core_balance['payload']['accounts'].filter(x=>x.product ==1?x:false)[0].balance)
+            localData.setUserData('amount_ars', core_balance['payload']['accounts'].filter(x=>x.product ==2?x:false)[0].balance)
           })
           .catch((err) => {
             this.loginModal()

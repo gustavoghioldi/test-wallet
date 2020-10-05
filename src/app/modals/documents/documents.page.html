@@ -1,19 +1,16 @@
 <div class="container">
 
   <ion-list lines="none">
-    <ion-item>
-      <ion-label>Selfie:</ion-label>
-      <ion-input (click)="takePhoto('selfie')" type="text"></ion-input>
-    </ion-item>
-
-    <ion-item>
+    <ion-item (click)="takePhoto('id_front')">
       <ion-label>Documento Frente:</ion-label>
-      <ion-input (click)="takePhoto('id_front')" type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Dpocumento Dorso:</ion-label>
-      <ion-input (click)="takePhoto('id_back')" type="text"></ion-input>
+    <ion-item (click)="takePhoto('id_front')" >
+      <ion-label>Documento Dorso:</ion-label>
+    </ion-item>
+
+    <ion-item (click)="takePhoto('proof_residence')" >
+      <ion-label>Servicio a su nombre:</ion-label>
     </ion-item>
     
   </ion-list>

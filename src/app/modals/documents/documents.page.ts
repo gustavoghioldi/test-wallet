@@ -11,7 +11,7 @@ const { Camera } = Plugins;
 
 export class DocumentsPage implements OnInit {
 
-  public selfie: string
+  public proof_residence : string
   public id_front: string
   public id_back: string
 

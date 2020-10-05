@@ -1,35 +1,36 @@
 <div class="container">
 
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        Convertir moneda de:
+      </ion-label>
+    </ion-item>
 
-  
-<ion-list lines="none">
-  <ion-item>
-    <ion-label>
-      Convertir moneda
-    </ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>de:</ion-label>
-    <ion-select value="from" okText="Seleccionar" cancelText="Cancelar">
-      <ion-select-option value="DUOS">Duollar</ion-select-option>
-      <ion-select-option value="ARGS">Pesos Argentinos</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <ion-item [ngStyle]="{'background-color':convertion === 'DUOS2ARGS' ? 'gray' : 'transparent' }"  (click)="selectConvert('DUOS2ARGS')">
 
-  <ion-item>
-    <ion-label>a:</ion-label>
-    <ion-select value="to" okText="Seleccionar" cancelText="Cancelar">
-      <ion-select-option value="DUOS">Duollar</ion-select-option>
-      <ion-select-option value="ARGS">Pesos Argentinos</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label>cantidad:</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
-</ion-list>
+      <ion-label>Duollar a Pesos Argentinos</ion-label>
+      <div *ngIf="convertion === 'DUOS2ARGS'">*</div>
+    </ion-item>
 
-  
+    <ion-item [ngStyle]="{'background-color':convertion === 'ARGS2DUOS' ? 'gray' : 'transparent' }" (click)="selectConvert('ARGS2DUOS')">
+      
+      <ion-label>Pesos Argentinos a Duollar</ion-label>
+      <div *ngIf="convertion === 'ARGS2DUOS'">*</div>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>cantidad de:</ion-label>
+      <ion-input type="text" [(ngModel)]="convertAmount" value="0.0" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-button (click)="convert()">Enviar</ion-button>
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-item>
+
+  </ion-list>
+
+
 
 
 </div>

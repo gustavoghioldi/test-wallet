@@ -1,5 +1,3 @@
-
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -8,19 +6,20 @@
   </ion-header>
 
   <div id="container">
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+    </ion-item>
 
-      <ion-item >
-        <ion-label>Nombre:</ion-label>
-      </ion-item>
+    <ion-item>
+      <ion-label>Email:</ion-label>
+    </ion-item>
 
-      <ion-item>
-        <ion-label>Email:</ion-label>
-      </ion-item>
+    <ion-item *ngIf="!userData.activated">
+      <ion-label (click)="modalUserData()">Validación de identidad</ion-label>
+    </ion-item>
+    <ion-item *ngIf="!userData.activated">
+      <ion-label (click)="modalDocuments()">Documentación</ion-label>
+    </ion-item>
 
-      <ion-item>
-        <ion-label>Gloua Address:</ion-label>
-      </ion-item>
-      
-  
   </div>
 </ion-content>

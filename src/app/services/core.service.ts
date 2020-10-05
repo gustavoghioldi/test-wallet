@@ -59,6 +59,23 @@ export class CoreService {
     }
     return await this.http.post(this.url + 'transfer/', data, httpOptions).toPromise();
   }
+
+  async convert(from: string, to: string, amount:number) {
+    let auth = await this.localData.getJwt()
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + auth
+      })
+    };
+    let data = {
+      "from": from,
+      "to": to,
+      "amount":amount
+    }
+    return await this.http.post(`${this.url}convert/`, data, httpOptions).toPromise();
+  }
+
   async getTransactions() {
     let auth = await this.localData.getJwt()
     const httpOptions = {
@@ -68,6 +85,17 @@ export class CoreService {
       })
     };
     return await this.http.get(this.url + 'transfers/', httpOptions).toPromise();
+  }
+
+  async getUserData() {
+    let auth = await this.localData.getJwt()
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + auth
+      })
+    };
+    return await this.http.get(this.url + 'user/', httpOptions).toPromise();
   }
   async chashOut() { }
 

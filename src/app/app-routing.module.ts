@@ -27,6 +27,14 @@ const routes: Routes = [
     path: 'cashout',
     loadChildren: () => import('./modals/cashout/cashout.module').then( m => m.CashoutPageModule)
   },
+  {
+    path: 'userdata',
+    loadChildren: () => import('./modals/userdata/userdata.module').then( m => m.UserdataPageModule)
+  },
+  {
+    path: 'documents',
+    loadChildren: () => import('./modals/documents/documents.module').then( m => m.DocumentsPageModule)
+  },
 
 ];
 @NgModule({

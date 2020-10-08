@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'documents',
     loadChildren: () => import('./modals/documents/documents.module').then( m => m.DocumentsPageModule)
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./modals/signin/signin.module').then( m => m.SigninPageModule)
+  },
 
 ];
 @NgModule({

@@ -1,0 +1,36 @@
+
+
+<div class="container">
+
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>Nombre:</ion-label>
+      <ion-input [(ngModel)]="first_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apellido:</ion-label>
+      <ion-input [(ngModel)]="last_name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Usuario:</ion-label>
+      <ion-input [(ngModel)]="username"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Contraseña:</ion-label>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Verificar Contraseña:</ion-label>
+      <ion-input [(ngModel)]="verifyPassword" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button  (click)="send()">Enviar</ion-button>
+      <ion-button (click)="dismiss()">Salir</ion-button>
+    </ion-item>
+    
+
+  </ion-list>
+</div>

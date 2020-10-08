@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CoreService } from 'src/app/services/core.service';
 import { ModalController, ToastController } from '@ionic/angular';
 import { LocalDataService } from 'src/app/services/local-data.service';
+import { SigninPage } from '../signin/signin.page';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,7 @@ import { LocalDataService } from 'src/app/services/local-data.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  [x: string]: any;
   public username: string;
   public password : string;
   constructor(public toastController: ToastController, private localData: LocalDataService, private core:CoreService, private modalCtrl: ModalController) { }
@@ -24,13 +26,21 @@ export class LoginPage implements OnInit {
         this.dismiss();
       })
       .catch((err)=>{
-        this.errorToast()
+        this.errorToast(err.error.message)
         console.log(err);
       })
   }
-  async errorToast () {
+  async modalSignin() {
+
+    const modal = await this.modalCtrl.create({
+      component: SigninPage,
+      mode: "ios"
+    });
+    return await modal.present();
+  }
+  async errorToast (message) {
     const toast = await this.toastController.create({
-      message: 'usuario y/o contraseña incorrectos',
+      message: message,
       duration: 3000
     });
     toast.present();

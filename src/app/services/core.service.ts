@@ -55,12 +55,12 @@ export class CoreService {
     let data = {
       "toUsername": username,
       "transferAmount": amount,
-      "type":"DUOS"
+      "type": "DUOS"
     }
     return await this.http.post(this.url + 'transfer/', data, httpOptions).toPromise();
   }
 
-  async convert(from: string, to: string, amount:number) {
+  async convert(from: string, to: string, amount: number) {
     let auth = await this.localData.getJwt()
     const httpOptions = {
       headers: new HttpHeaders({
@@ -71,7 +71,7 @@ export class CoreService {
     let data = {
       "from": from,
       "to": to,
-      "amount":amount
+      "amount": amount
     }
     return await this.http.post(`${this.url}convert/`, data, httpOptions).toPromise();
   }
@@ -96,6 +96,20 @@ export class CoreService {
       })
     };
     return await this.http.get(this.url + 'user/', httpOptions).toPromise();
+  }
+  async signin(username: string, first_name: string, last_name: string, password: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+    let data = {
+      "username": username,
+      "first_name": first_name,
+      "last_name": last_name,
+      "password": password
+    }
+    return await this.http.post(this.url + 'signin/', data, httpOptions).toPromise();
   }
   async chashOut() { }
 

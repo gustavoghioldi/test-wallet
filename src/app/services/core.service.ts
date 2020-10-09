@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalDataService } from './local-data.service';
-import { core } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class CoreService {
-  private url = 'http://127.0.0.1:8000/api/';
+  private url = 'http://zippy-hold-291419.uc.r.appspot.com/api/';
 
   constructor(public http: HttpClient, private localData: LocalDataService) { }
 

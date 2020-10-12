@@ -7,18 +7,25 @@
 
   <div id="container">
     <ion-item>
-      <ion-label>Nombre: {{userData.given_name}} {{userData.family_name}}</ion-label>
+      <ion-label>Nombre: {{userData['given_name']}} {{userData['family_name']}}</ion-label>
     </ion-item>
 
     <ion-item>
-      <ion-label>Email: {{userData.username}}</ion-label>
+      <ion-label>Email: {{userData['username']}}</ion-label>
     </ion-item>
 
-    <ion-item *ngIf="!userData.activated">
-      <ion-label (click)="modalUserData()">Validación de identidad</ion-label>
+    <ion-item>
+      <ion-label (click)="modalUserData()">Datos de identidad
+        <ion-icon name="checkmark-done-outline" class="coin" *ngIf="userData['activated']"></ion-icon>
+        <ion-icon name="alert" class="coin" *ngIf="!userData['activated']"></ion-icon>
+      </ion-label>
     </ion-item>
-    <ion-item *ngIf="!userData.activated">
-      <ion-label (click)="modalDocuments()">Documentación</ion-label>
+
+    <ion-item>
+      <ion-label (click)="modalDocuments()">Documentación
+        <ion-icon name="checkmark-done-outline" class="coin" *ngIf="userData['activated']"></ion-icon>
+        <ion-icon name="alert" class="coin" *ngIf="!userData['activated']"></ion-icon>
+      </ion-label>
     </ion-item>
 
   </div>

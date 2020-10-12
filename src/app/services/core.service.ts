@@ -7,7 +7,7 @@ import { LocalDataService } from './local-data.service';
 })
 
 export class CoreService {
-  private url = 'http://zippy-hold-291419.uc.r.appspot.com/api/';
+  private url = 'https://zippy-hold-291419.uc.r.appspot.com//api/';
 
   constructor(public http: HttpClient, private localData: LocalDataService) { }
 
@@ -16,6 +16,7 @@ export class CoreService {
       "username": username,
       "password": password
     }
+    console.log(payload)
     return await this.http.post(this.url + "users/jwt", payload).toPromise();
   }
 
@@ -110,6 +111,61 @@ export class CoreService {
     }
     return await this.http.post(this.url + 'signin/', data, httpOptions).toPromise();
   }
+
+  async sep0009(
+    country: string,
+    state: string,
+    city: string,
+    street: string,
+    cp: string,
+    id_type: string,
+    id: string,
+    cel_phone: string,
+    date_of_birth: string, 
+    gender: string
+  ) {
+    let auth = await this.localData.getJwt()
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: "Bearer " + auth
+      })
+    };
+    let data = {
+      "country":"AR",
+      "state": state,
+      "city":city, 
+      "street":street, 
+      "cp":cp, 
+      "id_type":id_type, 
+      "id":id, 
+      "cel_phone":cel_phone,
+      "date_of_birth":date_of_birth,
+      "gender":gender
+    }
+    return await this.http.patch(this.url + 'user/', data, httpOptions).toPromise();
+  }
+
+  async sep0009Documents(
+    photo_id_front: string, 
+    photo_id_back: string, 
+    photo_proof_residence: string) {
+    let auth = await this.localData.getJwt()
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type': 'application/json',
+          Authorization: "Bearer " + auth
+        })
+      };
+    let data = {
+      "photo_id_front": photo_id_front,
+      "photo_id_back"  : photo_id_back,
+      "photo_proof_residence": photo_proof_residence
+    }
+    return await this.http.put(this.url + 'user/', data, httpOptions).toPromise();
+  }
+
+  
   async chashOut() { }
 
   async chashIn() { }

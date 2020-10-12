@@ -4,14 +4,15 @@
   
     <ion-list lines="none">
     <ion-item>
+      <ion-label *ngIf="kindOf=='G2G'">Usuario Duollar</ion-label>
       <ion-label *ngIf="kindOf=='CBU'">CBU</ion-label>
       <ion-input [(ngModel)]="accountIdentity"></ion-input>
-      <ion-icon *ngIf="kindOf=='G2G'" name="qr-code-outline"></ion-icon>
-     
+      
     </ion-item>
+    
     <ion-item>
       <ion-icon *ngIf="kindOf=='CBU'" name="logo-usd" ></ion-icon>
-      <ion-label *ngIf="kindOf=='G2G'">DU$</ion-label>
+      <ion-label *ngIf="kindOf=='G2G'">Duollars</ion-label>
       <ion-input [(ngModel)]="amount" type="number"></ion-input>
     </ion-item>
 

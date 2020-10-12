@@ -1,13 +1,20 @@
 <ion-content [fullscreen]="true">
-
+  
+  <div class="header-container">
+    <ion-item lines="none" style="text-align: center;">
+      <ion-label>Cotización Duollar</ion-label>
+    </ion-item>
+    <ion-item lines="none" style="text-align: center;">
+      <ion-label>Compra {{price["sell_price"]|number : '1.4-4'}}</ion-label>
+      <ion-label>Venta {{price["buy_price"]|number : '1.4-4'}}</ion-label>
+    </ion-item>
+  </div>
 
   <div id="container">
-
-
     <ion-item (click)="modalTranfer('G2G')" class="rocket">
       <ion-icon class="coin" name="rocket-outline"></ion-icon>
       <ion-label>
-        Transferir DU$
+        Transferir Duollar
       </ion-label>
     </ion-item>
     <ion-item (click)="modalConvert('G2G')" class="rocket">
@@ -16,7 +23,6 @@
         Convertir
       </ion-label>
     </ion-item>
-
     <ion-item (click)="cashOut()" class="rocket">
       <ion-icon class="coin" name="arrow-down-outline"></ion-icon>
       <ion-label>Retirar Saldo</ion-label>
@@ -25,7 +31,6 @@
       <ion-icon class="coin" name="arrow-up-outline"></ion-icon>
       <ion-label>Cargar Saldo</ion-label>
     </ion-item>
-
-
   </div>
+
 </ion-content>

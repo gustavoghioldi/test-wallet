@@ -18,7 +18,7 @@ export class Tab3Page {
           console.log(data);
           this.transactionsDuos = data["payload"][0]["transactions"];
           this.transactionsDuos = data["payload"][1]["transactions"];
-        })
+        }).catch(err=>console.log(err))
       }
    });
     

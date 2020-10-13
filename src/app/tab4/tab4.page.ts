@@ -6,7 +6,9 @@ import { LocalDataService } from '../services/local-data.service';
 import { ModalController } from '@ionic/angular';
 import { UserdataPage } from '../modals/userdata/userdata.page';
 import { DocumentsPage } from '../modals/documents/documents.page';
+import { Plugins } from '@capacitor/core';
 
+const { Browser } = Plugins;
 
 @Component({
   selector: 'app-tab4',
@@ -43,6 +45,10 @@ export class Tab4Page {
       mode: "ios"
     });
     return await modal.present();
+  }
+
+  async info() {
+    await Browser.open({ url: 'http://argenpepper.com/' });
   }
   
 

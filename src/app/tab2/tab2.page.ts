@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { CashinPage } from '../modals/cashin/cashin.page';
+import { CashoutPage } from '../modals/cashout/cashout.page';
 import { ConvertPage } from '../modals/convert/convert.page';
 import { PaysPage } from '../modals/pays/pays.page';
 import { LocalDataService } from '../services/local-data.service';
@@ -53,13 +55,19 @@ export class Tab2Page {
   }
 
   async cashIn() {
-    alert("Depositar en la cuenta : bla  bla bla ")
-    console.log('CashIn...');  
+    const modal = await this.modalController.create({
+      component: CashinPage,
+      mode: "ios"
+    });
+    return await modal.present(); 
   }
 
   async cashOut() {
-    alert("Enviar a la cuenta: bla  bla bla ")
-    console.log('CashOut...');  
+    const modal = await this.modalController.create({
+      component: CashoutPage,
+      mode: "ios"
+    });
+    return await modal.present();  
   }
   
 

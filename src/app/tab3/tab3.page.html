@@ -4,20 +4,28 @@
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
-
-
+  <ion-item>
+    <ion-segment value="ARGS">
+      <ion-segment-button value="ARGS">
+        <ion-label style="color: aliceblue;">Pesos Ars</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="DUOS">
+        <ion-label style="color: aliceblue;">Duollar</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
   <ion-item>
     <ion-label>Fecha</ion-label>
     <ion-label>Valor</ion-label>
     <ion-label>Monto</ion-label>
   </ion-item>
-    <ion-item *ngFor="let transaction of transactionsDuos">
-      <ion-label>{{transaction.date}}</ion-label>
-      <ion-label>{{transaction.value}}</ion-label>
-      <ion-label>{{transaction.amount|number : '1.4-4'}}</ion-label>
-    </ion-item>
-  
+  <ion-item *ngFor="let transaction of transactionsDuos">
+    <ion-label>{{transaction.date}}</ion-label>
+    <ion-label>{{transaction.value}}</ion-label>
+    <ion-label>{{transaction.amount|number : '1.4-4'}}</ion-label>
+  </ion-item>
 
 
-  
+
+
 </ion-content>

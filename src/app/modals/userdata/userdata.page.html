@@ -19,7 +19,10 @@
     </ion-item>
     <ion-item>
       <ion-label>Documento:</ion-label>
-      <ion-input [(ngModel)]="id_type" type="text" value="Capital Federal"></ion-input>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="DNI">DNI</ion-select-option>
+      </ion-select>
+      <!-- <ion-input [(ngModel)]="id_type" type="text" value="Capital Federal"></ion-input> -->
     </ion-item>
     <ion-item>
       <ion-label>Número de documento:</ion-label>
@@ -31,11 +34,17 @@
     </ion-item>
     <ion-item>
       <ion-label>Fecha de Nacimieto:</ion-label>
-      <ion-input [(ngModel)]="date_of_birth" type="text" value="Capital Federal"></ion-input>
+      <!-- <ion-input [(ngModel)]="date_of_birth" type="text" value="Capital Federal"></ion-input> -->
+      <ion-datetime displayFormat="YYYY-MM-DD" min="1900-03-14" max="2010-12-12"></ion-datetime>
+
     </ion-item>
     <ion-item>
       <ion-label>Genero:</ion-label>
-      <ion-input [(ngModel)]="gender" type="text" value="Capital Federal"></ion-input>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="f">Female</ion-select-option>
+        <ion-select-option value="m">Male</ion-select-option>
+      </ion-select>
+      <!-- <ion-input [(ngModel)]="gender" type="text" value="Capital Federal"></ion-input> -->
     </ion-item>
     <ion-item>
       <ion-button  (click)="send()">Enviar</ion-button>

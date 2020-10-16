@@ -11,13 +11,22 @@ import { LocalDataService } from '../services/local-data.service';
 export class Tab3Page {
   public transactionsDuos;
   public transactionsArgs;
+  public accountType: string = "ARGS"
   constructor(public core: CoreService,private localData: LocalDataService,  private router: Router) {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd && this.router.url == '/tabs/tab3') { 
         core.getTransactions().then((data)=>{
           console.log(data);
-          this.transactionsDuos = data["payload"][0]["transactions"];
-          this.transactionsDuos = data["payload"][1]["transactions"];
+          data["payload"].filter(data => {
+            if (data["product_code"] == "DUOS") {
+              this.transactionsDuos = data['transactions']
+            } 
+            if (data["product_code"] == "ARGS") {
+              this.transactionsArgs = data['transactions']
+            } 
+              
+          })
+          
         }).catch(err=>console.log(err))
       }
    });

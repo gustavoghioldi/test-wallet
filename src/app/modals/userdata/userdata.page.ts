@@ -16,11 +16,12 @@ export class UserdataPage implements OnInit {
   public city: string
   public street: string
   public cp: string
-  public id_type: string
+  public id_type: string = "DNI"
   public id: string
   public cel_phone: string
   public date_of_birth: string
   public gender: string
+  public cbu: string
 
   constructor(private core: CoreService, private modalCtrl: ModalController ) { }
 
@@ -28,7 +29,7 @@ export class UserdataPage implements OnInit {
   }
 
   send() {
-    this.core.sep0009(this.country, this.state, this.city, this.street, this.cp, this.id_type, this.id, this.cel_phone, this.date_of_birth, this.gender)
+    this.core.sep0009(this.country, this.state, this.city, this.street, this.cp, this.id_type, this.id, this.cel_phone, this.cbu, this.date_of_birth, this.gender)
       .then(data => {
         console.log(data)
       })

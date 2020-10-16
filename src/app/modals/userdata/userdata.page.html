@@ -3,7 +3,9 @@
   <ion-list lines="none">
     <ion-item>
       <ion-label>País:</ion-label>
-      <ion-input [(ngModel)]="country" type="text"></ion-input>
+      <ion-select placeholder="Select One" [(ngModel)]="country">
+        <ion-select-option value="AR">ARGENTINA</ion-select-option>
+      </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Provincia:</ion-label>
@@ -18,8 +20,8 @@
       <ion-input [(ngModel)]="cp" type="text" value="Capital Federal"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>Documento:</ion-label>
-      <ion-select placeholder="Select One">
+      <ion-label >Documento:</ion-label>
+      <ion-select placeholder="Select One" [(ngModel)]="id_type">
         <ion-select-option value="DNI">DNI</ion-select-option>
       </ion-select>
       <!-- <ion-input [(ngModel)]="id_type" type="text" value="Capital Federal"></ion-input> -->
@@ -33,21 +35,26 @@
       <ion-input [(ngModel)]="cel_phone" type="text" value="Capital Federal"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label>CBU:</ion-label>
+      <ion-input [(ngModel)]="cbu" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label>Fecha de Nacimieto:</ion-label>
       <!-- <ion-input [(ngModel)]="date_of_birth" type="text" value="Capital Federal"></ion-input> -->
-      <ion-datetime displayFormat="YYYY-MM-DD" min="1900-03-14" max="2010-12-12"></ion-datetime>
+      <ion-datetime [(ngModel)]="date_of_birth" displayFormat="YYYY-MM-DD" min="1900-03-14" max="2010-12-12"></ion-datetime>
 
     </ion-item>
     <ion-item>
       <ion-label>Genero:</ion-label>
-      <ion-select placeholder="Select One">
-        <ion-select-option value="f">Female</ion-select-option>
-        <ion-select-option value="m">Male</ion-select-option>
+      <ion-select [(ngModel)]="gender" placeholder="Seleccionar">
+        <ion-select-option value="M">Masculino</ion-select-option>
+        <ion-select-option value="F">Femenino</ion-select-option>
+        
       </ion-select>
       <!-- <ion-input [(ngModel)]="gender" type="text" value="Capital Federal"></ion-input> -->
     </ion-item>
     <ion-item>
-      <ion-button  (click)="send()">Enviar</ion-button>
+      <ion-button (click)="send()">Enviar</ion-button>
       <ion-button (click)="dismiss()">Cerrar</ion-button>
 
     </ion-item>

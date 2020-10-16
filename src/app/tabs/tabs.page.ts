@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import { CoreService } from '../services/core.service';
 import { LocalDataService } from '../services/local-data.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { LoginPage } from '../modals/login/login.page';
-import { ModalController } from '@ionic/angular';
-import { Plugins } from '@capacitor/core';
+import { ModalController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
@@ -13,26 +12,49 @@ import { Plugins } from '@capacitor/core';
 })
 export class TabsPage {
   public amount;
+  public userActivated: boolean;
   constructor(public core: CoreService,
     public modalController: ModalController,
     private localData: LocalDataService,
-    private router: Router) {
+    public toastController: ToastController,
+    private router: Router
+    ) {
     this.router.events.subscribe((e) => {
       if (e instanceof NavigationEnd) {
+        
+        this.core.parseJwt()
+          .then(data => {
+            console.log(data);
+            if (data === null) {
+              this.loginModal()
+            }
+
+            this.activatedAlert(data['activated'])
+
+          })
         this.getPrice();
       }
       if (e instanceof NavigationEnd && this.router.url == '/tabs/tab1') {
         this.core.getAmount()
           .then((core_balance) => {
-            console.log(core_balance)
+            
             localData.setUserData('amount_dus', core_balance['payload']['accounts'].filter(x => x.product == 1 ? x : false)[0].balance)
+              
             localData.setUserData('amount_ars', core_balance['payload']['accounts'].filter(x => x.product == 2 ? x : false)[0].balance)
+           
           })
           .catch((err) => {
-            this.loginModal()
+            if (err.error.message=="session expirada") {
+              this.loginModal()
+            }
+            localData.setUserData('amount_dus', "0")
+            localData.setUserData('amount_ars', "0")
           });
       }
     });
+  }
+  async activatedAlert(status: boolean) {
+    this.userActivated = status
   }
 
   async loginModal() {
@@ -45,10 +67,10 @@ export class TabsPage {
 
   async getPrice() {
     this.core.getPrice().then(data => {
-  
+      
       this.localData.setUserData('duollar_price', data['price'])
 
-    
+
     })
   }
 

@@ -40,7 +40,8 @@ export class PaysPage implements OnInit {
         message = "Esta seguro que quiere transferir al CBU: "+this.accountIdentity;
         break;
       case 'G2G':
-        message = "Esta seguro que quiere transferir: "+this.amount+"\na: "+this.accountIdentity;
+        message = "Esta seguro que quiere transferir: "+this.amount+"<br>";
+        message += "a: "+this.accountIdentity
         break;
       default:
         break;
@@ -51,12 +52,14 @@ export class PaysPage implements OnInit {
   }
 
   async presentAlertPrompt(response) {
+    this.core.createOTP('verify_transfer');
+    
     const alert = await this.alertController.create({
       header: 'Chequear información',
       message: response,
       inputs: [
         {
-          name: 'transfer_token',
+          name: 'otp',
           type: 'password',
           placeholder: 'password de seguridad',
           attributes: {
@@ -74,10 +77,10 @@ export class PaysPage implements OnInit {
           }
         }, {
           text: 'Ok',
-          handler: async () => {
+          handler: async (data) => {
             const loading = await this.presentLoading()
             loading.present()
-            this.core.transfer(this.accountIdentity, this.amount)
+            this.core.transfer(this.accountIdentity, this.amount, this.message, data.otp)
             .then(()=>{
               loading.dismiss()
               this.alertSuccessOrFail('SUCCESS')

@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-
+ 
   <div class="header-container">
     <ion-item lines="none" style="text-align: center;">
       <ion-label>Cotización Duollar</ion-label>
@@ -12,18 +12,21 @@
 
   <div id="container">
     <ion-item>
-      <ion-icon class="coin" name="server-outline"></ion-icon>
+      <ion-icon class="coin" name="cash-outline"></ion-icon>
       <ion-label>Duollars {{balance_dus|number : '1.4-4'}}</ion-label>
     </ion-item>
 
-    <ion-item>
+    <!-- <ion-item>
       <ion-icon class="coin" name="cash-outline"></ion-icon>
-      <ion-label>Equivalente en $ARG</ion-label>
-    </ion-item>
+      <ion-label>Duollars en $ARGs {{balance_dus*price["buy_price"]}}</ion-label>
+    </ion-item> -->
 
     <ion-item>
       <ion-icon class="coin" name="logo-usd"></ion-icon>
       <ion-label>ARG Pesos {{balance_ars|number : '1.2-2'}}</ion-label>
     </ion-item>
+  
+      
   </div>
+
 </ion-content>
